@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('quote_enqueries', function (Blueprint $table) {
             $table->id();
+            $table->string('requirement');
+            $table->string('category');
+            $table->string('quantity');
             $table->timestamps();
         });
     }

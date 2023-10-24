@@ -12,6 +12,7 @@ use App\Http\Controllers\Dashboard\TrafficsController;
 use App\Http\Controllers\ItemsController;
 use App\Http\Controllers\LabinstrumentController;
 use App\Http\Controllers\QuoteController;
+use App\Http\Controllers\QuoteEnquiryController;
 use App\Http\Controllers\SlotsController;
 use App\Http\Controllers\StorageController;
 use App\Http\Controllers\VenderController;
@@ -126,7 +127,7 @@ Route::middleware(['splade'])->group(function () {
 
     //quoteenqry
 
-    Route::get('enquery/create',[]);
+    Route::get('enquiry/create',[QuoteEnquiryController::class,'create'])->name('enquiry-quote.create');
 
 
 
