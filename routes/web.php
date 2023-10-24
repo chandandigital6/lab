@@ -125,9 +125,14 @@ Route::middleware(['splade'])->group(function () {
     Route::get('quote/delete/{quote}', [QuoteController::class, 'delete'])->name('quote.delete');
 
 
-    //quoteenqry
+    //quote Enquiry
 
+    Route::get('enquiry/index',[QuoteEnquiryController::class,'index'])->name('enquiry-quote.index');
     Route::get('enquiry/create',[QuoteEnquiryController::class,'create'])->name('enquiry-quote.create');
+    Route::post('enquiry/store',[QuoteEnquiryController::class,'store'])->name('enquiry-quote.store');
+    Route::get('enquiry/edit/{quotEnquiry}',[QuoteEnquiryController::class,'edit'])->name('enquiry-quote.edit');
+    Route::put('enquiry/update/{quotEnquiry}',[QuoteEnquiryController::class,'update'])->name('enquiry-quote.update');
+    Route::get('enquiry/delete/{quotEnquiry}',[QuoteEnquiryController::class,'delete'])->name('enquiry-quote.delete');
 
 
 
