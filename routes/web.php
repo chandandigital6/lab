@@ -11,6 +11,7 @@ use App\Http\Controllers\Dashboard\UserController;
 use App\Http\Controllers\Dashboard\TrafficsController;
 use App\Http\Controllers\ItemsController;
 use App\Http\Controllers\LabinstrumentController;
+use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\QuoteController;
 use App\Http\Controllers\QuoteEnquiryController;
 use App\Http\Controllers\SlotsController;
@@ -176,4 +177,15 @@ Route::middleware(['splade'])->group(function () {
     Route::get('item/edit/{item}',[ItemsController::class,'edit'])->name('item.edit');
     Route::put('item/update/{item}',[ItemsController::class,'update'])->name('item.update');
     Route::get('item/delete/{item}',[ItemsController::class,'delete'])->name('item.delete');
+
+
+    // project
+
+    Route::get('project/index',[ProjectController::class,'index'])->name('project.index');
+    Route::get('project/create',[ProjectController::class,'create'])->name('project.create');
+    Route::post('project/store',[ProjectController::class,'store'])->name('project.store');
+    Route::get('project/edit/{project}',[ProjectController::class,'edit'])->name('project.edit');
+    Route::put('project/update/{project}',[ProjectController::class,'update'])->name('project.update');
+    Route::get('project/delete/{project}',[ProjectController::class,'delete'])->name('project.delete');
+
 });

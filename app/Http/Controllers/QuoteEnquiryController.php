@@ -15,7 +15,7 @@ class QuoteEnquiryController extends Controller
 {
     public function index(){
         $enquiryTable=SpladeTable::for(QuoteEnquery::class)
-            ->column('Id')
+            ->column('id')
             ->column('requirement')
             ->column('category')
             ->column('quantity')
