@@ -10,9 +10,25 @@ use ProtoneMedia\Splade\FormBuilder\Input;
 use ProtoneMedia\Splade\FormBuilder\Submit;
 use ProtoneMedia\Splade\SpladeForm;
 use ProtoneMedia\Splade\SpladeTable;
+use Barryvdh\DomPDF\Facade\Pdf as PDF;
+//use PDF;
 
 class ProjectController extends Controller
 {
+
+    public function pdfDownload()
+    {
+        $data = Project::all();
+//        dd($data);
+        $dataArray = $data->toArray();
+//        return view('pdf.project',compact('data'));
+
+        $pdf = PDF::loadView('pdf.project', ['data' => $dataArray]);
+
+        return $pdf->stream();
+
+
+    }
     public function index(){
         $projectTable=SpladeTable::for(Project::all())
             ->column('name')

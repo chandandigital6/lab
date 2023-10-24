@@ -1,6 +1,7 @@
 <x-dashboard-layout>
     <x-section-content>
         <Link href="{{route('project.create')}}" class="bg-black text-white p-1 rounded-md">Create New</Link>
+        <Link href="{{route('project.pdf')}}" class="bg-black text-white p-1 rounded-md">Download Pdf</Link>
 
         <div class="flex ">
             <x-splade-table :for="$projectTable">

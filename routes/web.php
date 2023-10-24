@@ -187,5 +187,5 @@ Route::middleware(['splade'])->group(function () {
     Route::get('project/edit/{project}',[ProjectController::class,'edit'])->name('project.edit');
     Route::put('project/update/{project}',[ProjectController::class,'update'])->name('project.update');
     Route::get('project/delete/{project}',[ProjectController::class,'delete'])->name('project.delete');
-
+   Route::get('project/pdf',[ProjectController::class,'pdfDownload'])->name('project.pdf');
 });
