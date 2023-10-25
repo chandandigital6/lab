@@ -23,7 +23,7 @@ class ProjectController extends Controller
 //        dd($data);
         $dataArray = $data->toArray();
 //        return view('pdf.project',compact('data'));
-//        $pdf = PDF::loadView('pdf.project', ['data'=>$dataArray]);
+
         $pdf = pdf::loadView('pdf.project', ['data' => $dataArray]);
 //          print_r($pdf);
 //        dd($pdf);

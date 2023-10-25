@@ -24,9 +24,9 @@ class ProjectRequest extends FormRequest
         return [
             'name'=>'required|string',
             'project_details'=>'required',
-            'project_number'=>'required',
-            'total_fund'=>'required',
-            'fund_utilize'=>'required',
+            'project_number'=>'required|integer',
+            'total_fund'=>'required|integer',
+            'fund_utilize'=>'required|integer',
         ];
     }
 }

@@ -22,3 +22,8 @@
     @endforeach
     </tbody>
 </table>
+<div style="text-align: center; border-top: 1px solid #000; padding: 10px;">
+    <p>Given Name: chandan</p>
+    <p>Company Profile:chadan digitalllll</p>
+</div>
+
