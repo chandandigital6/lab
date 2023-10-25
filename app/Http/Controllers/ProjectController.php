@@ -11,6 +11,7 @@ use ProtoneMedia\Splade\FormBuilder\Submit;
 use ProtoneMedia\Splade\SpladeForm;
 use ProtoneMedia\Splade\SpladeTable;
 use Barryvdh\DomPDF\Facade\Pdf as PDF;
+
 //use PDF;
 
 class ProjectController extends Controller
@@ -22,9 +23,11 @@ class ProjectController extends Controller
 //        dd($data);
         $dataArray = $data->toArray();
 //        return view('pdf.project',compact('data'));
-
-        $pdf = PDF::loadView('pdf.project', ['data' => $dataArray]);
-
+//        $pdf = PDF::loadView('pdf.project', ['data'=>$dataArray]);
+        $pdf = pdf::loadView('pdf.project', ['data' => $dataArray]);
+//          print_r($pdf);
+//        dd($pdf);
+//        return $pdf->download('TABREJ.pdf');
         return $pdf->stream();
 
 

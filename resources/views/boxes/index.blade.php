@@ -36,6 +36,10 @@
         <div class="flex ">
             <x-splade-table :for="$boxesTable">
 
+                <x-splade-cell storage_id as="$box">
+                    {{ $box->storage->name }}
+                </x-splade-cell>
+
                 <x-splade-cell action as="$boxesTable">
                     <Link href="{{ route('boxes.edit',['box'=>$boxesTable->id]) }}" class="bg-black text-white p-2 rounded-md">Edit</Link>
                     <Link href="{{ route('boxes.delete',['box'=>$boxesTable->id]) }}" class="bg-red-600 text-white p-2 rounded-md ml-2">delete</Link>

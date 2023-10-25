@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ItemRequest;
 use App\Models\Items;
+use App\Models\Slots;
 use Illuminate\Http\Request;
 use ProtoneMedia\Splade\FormBuilder\File;
 use ProtoneMedia\Splade\FormBuilder\Input;
@@ -25,6 +26,8 @@ class ItemsController extends Controller
         return view('item.index',compact('itemTable'));
     }
     public function create(){
+//        $slot=Slots::all();
+//        $slotOp=$slot->pluck('')
             $itemForm=SpladeForm::make()->action(route('item.store'))->method('post')->fields([
                  Input::make('name')->placeholder('enter item name')->label('name')->required(),
                 File::make('item_photo')->label('item image')->required(),

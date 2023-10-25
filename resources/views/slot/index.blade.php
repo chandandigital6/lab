@@ -4,6 +4,7 @@
         <div class="">
             <x-splade-table :for="$slotTable">
 
+
                 <x-splade-cell action as="$slotTable">
                     <Link href="{{ route('slot.edit',['slot'=>$slotTable->id]) }}" class="bg-black text-white p-2 rounded-md">Edit</Link>
                     <Link href="{{ route('slot.delete',['slot'=>$slotTable->id]) }}" class="bg-red-600 text-white p-2 rounded-md ml-2">delete</Link>

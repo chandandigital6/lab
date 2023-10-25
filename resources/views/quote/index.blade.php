@@ -5,6 +5,9 @@
         <Link href="{{ route('enquiry-quote.create') }}" class="bg-red-500 text-white p-1 rounded-md ml-2">Quote Enqury</Link>
         <div class="flex">
             <x-splade-table :for="$quoteTable">
+                <x-splade-cell user_id as="$user">
+                    {{ $user->user->name }}
+                </x-splade-cell>
 
                 <x-splade-cell action as="$quoteTable">
                     <Link href="{{ route('quote.edit',['quote'=>$quoteTable->id]) }}" class="bg-black text-white p-2 rounded-md">Edit</Link>

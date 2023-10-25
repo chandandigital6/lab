@@ -23,7 +23,7 @@ class QuoteController extends Controller
 
   public function index(){
       $quoteTable=SpladeTable::for(Quote::class)
-          ->column('user_id')
+          ->column('user_id','User name')
           ->column('quotation_submitted')
           ->column('accepted_quotation')
           ->column('product_status_sheet_delivered')
@@ -35,12 +35,12 @@ class QuoteController extends Controller
   }
     public function create(){
         $user = User::all();
-        $userOption = $user->first(); // Retrieve the first LabInstrument from the collection
+        $userOption = $user->pluck('name','id')->toArray();
 
         $quoteForm = SpladeForm::make()->action(route('quote.store'))->method('post')->fields([
             Select::make('user_id')
                 ->label('user name')
-                ->options([$userOption->id => $userOption->name])->required(),
+                ->options($userOption)->required(),
             Input::make('quotation_submitted')->label('quotation_submitted')->placeholder('enter quotation_submitted')->required(),
             Input::make('accepted_quotation')->label('accepted_quotation')->placeholder('enter accepted_quotation')->required(),
             Input::make('product_status_sheet_delivered')->label('product_status_sheet_delivered')->placeholder('product_status_sheet_delivered')->required(),
@@ -58,11 +58,15 @@ class QuoteController extends Controller
 
   }
   public function edit($quote){
+      $user = User::all();
+      $userOption = $user->pluck('name','id')->toArray();
     $data=Quote::find($quote);
       $quoteForm=SpladeForm::make()->fill($data)
           ->action(route('quote.update',['quote'=>$quote]))
           ->method('put')->fields([
-          Number::make('user_id')->label('user_id')->placeholder('enter user id')->required(),
+              Select::make('user_id')
+                  ->label('user name')
+                  ->options($userOption)->required(),
           Input::make('quotation_submitted')->label('quotation_submitted')->placeholder('enter quotation_submitted')->required(),
           Input::make('accepted_quotation')->label('accepted_quotation')->placeholder('enter accepted_quotation')->required(),
           Input::make('product_status_sheet_delivered')->label('product_status_sheet_delivered')->placeholder('product_status_sheet_delivered')->required(),

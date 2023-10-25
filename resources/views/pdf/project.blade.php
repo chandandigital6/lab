@@ -6,7 +6,7 @@
         <th style="border: 1px solid #ccc; padding: 8px; text-align: left; background-color: #f2f2f2;">Project Number</th>
         <th style="border: 1px solid #ccc; padding: 8px; text-align: left; background-color: #f2f2f2;">Total Fund</th>
         <th style="border: 1px solid #ccc; padding: 8px; text-align: left; background-color: #f2f2f2;">Fund Utilized</th>
-{{--        <th style="border: 1px solid #ccc; padding: 8px; text-align: left; background-color: #f2f2f2;">Action</th>--}}
+        {{--        <th style="border: 1px solid #ccc; padding: 8px; text-align: left; background-color: #f2f2f2;">Action</th>--}}
     </tr>
     </thead>
     <tbody>
@@ -17,7 +17,7 @@
             <td style="border: 1px solid #ccc; padding: 8px; text-align: left;">{{ $project['project_number'] }}</td>
             <td style="border: 1px solid #ccc; padding: 8px; text-align: left;">{{ $project['total_fund'] }}</td>
             <td style="border: 1px solid #ccc; padding: 8px; text-align: left;">{{ $project['fund_utilize'] }}</td>
-{{--            <td style="border: 1px solid #ccc; padding: 8px; text-align: left;">--}}{{-- Any action buttons you want to include --}}{{--</td>--}}
+            {{--            <td style="border: 1px solid #ccc; padding: 8px; text-align: left;">--}}{{-- Any action buttons you want to include --}}{{--</td>--}}
         </tr>
     @endforeach
     </tbody>
