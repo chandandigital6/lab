@@ -37,8 +37,9 @@ class ProjectController extends Controller
             ->column('name')
             ->column('project_details')
             ->column('project_number')
-            ->column('total_fund')
+            ->column('total_fund','Total Fund Available')
             ->column('fund_utilize')
+            ->column('total_sum', 'Total Sum')
             ->column('action');
 
        return view('project.index',compact('projectTable'));
@@ -75,11 +76,40 @@ class ProjectController extends Controller
 
         return view('project.edit',compact('projectForm'));
     }
-    public function update(Project $project, ProjectRequest $request){
-        $project->update($request->all());
-        Toast::success('successfully update project ');
+
+    public function update(Project $project, ProjectRequest $request)
+    {
+        $requestData = $request->all();
+
+        // Calculate the total sum of fund_utilize for all projects
+        $totalSum = Project::sum('fund_utilize');
+
+        // Calculate the remaining funds
+        $remainingFunds = $project->total_fund - $requestData['fund_utilize'];
+
+        // Ensure remaining funds are not negative
+        if ($remainingFunds < 0) {
+            Toast::success('Fund utilization exceeds the total funds.');
+            return redirect()->route('project.edit', ['project' => $project->id]);
+        }
+
+        // Update the project with the new data
+        $project->update([
+            'name' => $requestData['name'],
+            'project_details' => $requestData['project_details'],
+            'project_number' => $requestData['project_number'],
+            'total_fund' => $remainingFunds,
+            'fund_utilize' => $requestData['fund_utilize'],
+        ]);
+
+        // Update the total_sum for all projects
+        Project::updateTotalSum($totalSum);
+
+        Toast::success('Successfully update project');
         return redirect()->route('project.index');
     }
+
+
 
     public function delete(Project $project){
         $project->delete();

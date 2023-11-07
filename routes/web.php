@@ -11,6 +11,7 @@ use App\Http\Controllers\Dashboard\UserController;
 use App\Http\Controllers\Dashboard\TrafficsController;
 use App\Http\Controllers\ItemsController;
 use App\Http\Controllers\LabinstrumentController;
+use App\Http\Controllers\ProductCategoryController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\QuoteController;
 use App\Http\Controllers\QuoteEnquiryController;
@@ -188,5 +189,13 @@ Route::middleware(['splade'])->group(function () {
     Route::put('project/update/{project}',[ProjectController::class,'update'])->name('project.update');
     Route::get('project/delete/{project}',[ProjectController::class,'delete'])->name('project.delete');
    Route::get('project/pdf',[ProjectController::class,'pdfDownload'])->name('project.pdf');
+
+   // Product Category
+    Route::get('product/index',[ProductCategoryController::class,'index'])->name('product-category.index');
+    Route::get('product/create',[ProductCategoryController::class,'create'])->name('product-category.create');
+    Route::post('product/store',[ProductCategoryController::class,'store'])->name('product-category.store');
+    Route::get('product/edit/{productCategory}',[ProductCategoryController::class,'edit'])->name('product-category.edit');
+    Route::put('product/update/{productCategory}',[ProductCategoryController::class,'update'])->name('product-category.update');
+    Route::get('product/delete/{productCategory}',[ProductCategoryController::class,'delete'])->name('product-category.delete');
 
 });

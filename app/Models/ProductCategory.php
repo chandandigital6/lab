@@ -5,13 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Project extends Model
+class ProductCategory extends Model
 {
     use HasFactory;
     protected $guarded=['id'];
-    public static function updateTotalSum($totalSum)
-    {
-        Project::query()->update(['total_sum' => $totalSum]);
-    }
 
+    public function enquery(){
+        return $this->hasMany(QuoteEnquery::class);
+
+    }
 }
+

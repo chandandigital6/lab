@@ -5,9 +5,12 @@
 
         <div class="flex ">
             <x-splade-table :for="$projectTable">
-{{--                <x-splade-cell item_photo as="$itemimage">--}}
-{{--                    <img src="{{asset('storage/'.$itemimage->item_photo)}}" alt="" style="width: 100px;">--}}
-{{--                </x-splade-cell>--}}
+                <x-splade-cell total_sum as="$project">
+
+                     {{ number_format($project->total_fund - $project->fund_utilize, 2) }}
+
+
+                </x-splade-cell>
                 <x-splade-cell action as="$projectTable">
                     <Link href="{{ route('project.edit',['project'=>$projectTable->id]) }}" class="bg-black text-white p-2 rounded-md">Edit</Link>
                     <Link href="{{ route('project.delete',['project'=>$projectTable->id]) }}" class="bg-red-600 text-white p-2 rounded-md ml-2">delete</Link>

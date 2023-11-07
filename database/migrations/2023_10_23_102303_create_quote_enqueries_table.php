@@ -12,9 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('quote_enqueries', function (Blueprint $table) {
+
             $table->id();
+            $table->unsignedBigInteger('ProductCategory_id')->nullable()->change();
+            $table->foreignId('ProductCategory_id')->references('id')->on('product_categories');
             $table->string('requirement');
-            $table->string('category');
+//            $table->string('category');
             $table->string('quantity');
             $table->timestamps();
         });

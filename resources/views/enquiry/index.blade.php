@@ -4,9 +4,9 @@
 
         <div class="flex ">
             <x-splade-table :for="$enquiryTable">
-{{--                <x-splade-cell item_photo as="$itemimage">--}}
-{{--                    <img src="{{asset('storage/'.$itemimage->item_photo)}}" alt="" style="width: 100px;">--}}
-{{--                </x-splade-cell>--}}
+                <x-splade-cell productCategory_id as="$productCategory">
+                    {{ $productCategory->productCategory->category_name }}
+                </x-splade-cell>
                 <x-splade-cell action as="$enquiryTable">
                     <Link href="{{ route('enquiry-quote.edit',['quotEnquiry'=>$enquiryTable->id]) }}" class="bg-black text-white p-2 rounded-md">Edit</Link>
                     <Link href="{{ route('enquiry-quote.delete',['quotEnquiry'=>$enquiryTable->id]) }}" class="bg-red-600 text-white p-2 rounded-md ml-2">delete</Link>

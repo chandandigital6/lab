@@ -3,10 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\EnquiryRequest;
+use App\Mail\QuoteEnquiry;
+use App\Models\ProductCategory;
 use App\Models\QuoteEnquery;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use ProtoneMedia\Splade\Facades\Toast;
 use ProtoneMedia\Splade\FormBuilder\Input;
+use ProtoneMedia\Splade\FormBuilder\Select;
 use ProtoneMedia\Splade\FormBuilder\Submit;
 use ProtoneMedia\Splade\SpladeForm;
 use ProtoneMedia\Splade\SpladeTable;
@@ -17,31 +21,45 @@ class QuoteEnquiryController extends Controller
         $enquiryTable=SpladeTable::for(QuoteEnquery::class)
             ->column('id')
             ->column('requirement')
-            ->column('category')
+            ->column('productCategory_id', 'Category')
             ->column('quantity')
             ->column('action');
         return view('enquiry.index',compact('enquiryTable'));
     }
     public function create(){
+           $productCategory=ProductCategory::all();
+        $userOption = $productCategory->pluck('category_name','id')->toArray();
+
         $EnquiryForm=SpladeForm::make()->action(route('enquiry-quote.store'))->method('post')->fields([
            Input::make('requirement')->label('Requirement')->required(),
-            Input::make('category')->label('Category')->required(),
+            Select::make('ProductCategory_id')
+                ->label('Product category')
+                ->options($userOption)->required(),
+//            Input::make('category')->label('Category')->required(),
             Input::make('quantity')->label('Quantity')->required(),
             Submit::make('create')->label('create'),
         ]);
         return view('enquiry.create',compact('EnquiryForm'));
     }
     public function store(EnquiryRequest $request){
+
            $quoteEnquiry=QuoteEnquery::create($request->all());
+//        $user = auth()->user();
+//        $message = 'New quote inquiry created successfullly';
+//        Mail::to($user->email)->send(new QuoteEnquiry($message));
         Toast::success('successfully created quote enquiry');
           return redirect()->route('enquiry-quote.index');
 
     }
     public function edit($quotEnquiry){
+        $productCategory=ProductCategory::all();
+        $userOption = $productCategory->pluck('category_name','id')->toArray();
         $quotEnquiry=QuoteEnquery::find($quotEnquiry);
         $EnquiryForm=SpladeForm::make()->fill($quotEnquiry)->action(route('enquiry-quote.update',['quotEnquiry'=>$quotEnquiry->id]))->method('put')->fields([
             Input::make('requirement')->label('Requirement')->required(),
-            Input::make('category')->label('Category')->required(),
+            Select::make('ProductCategory_id')
+                ->label('Product category')
+                ->options($userOption)->required(),
             Input::make('quantity')->label('Quantity')->required(),
             Submit::make('edit')->label('edit'),
         ]);

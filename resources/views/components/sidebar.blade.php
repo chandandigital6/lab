@@ -24,6 +24,16 @@
                 <i class="fa-solid fa-house"></i>
                 <span class="mx-2 text-sm">Vender</span>
             </Link>
+            <Link href="{{ route('product-category.index') }}" class="{{ request()->routeIs('dashboard.index') ? 'bg-indigo-50 dark:bg-indigo-400 text-gray-700 dark:text-white font-semibold' : '' }} text-sm py-3 my-0 mx-2 flex items-center whitespace-nowrap px-4 font-medium text-gray-500 dark:text-white hover:bg-indigo-50 dark:hover:bg-indigo-400 rounded-lg shadow-none transition-colors ease-in-out">
+            <i class="fa-solid fa-house"></i>
+            <span class="mx-2 text-sm">Product Category</span>
+            </Link>
+
+            <Link href="{{ route('enquiry-quote.index') }}" class="{{ request()->routeIs('dashboard.index') ? 'bg-indigo-50 dark:bg-indigo-400 text-gray-700 dark:text-white font-semibold' : '' }} text-sm py-3 my-0 mx-2 flex items-center whitespace-nowrap px-4 font-medium text-gray-500 dark:text-white hover:bg-indigo-50 dark:hover:bg-indigo-400 rounded-lg shadow-none transition-colors ease-in-out">
+            <i class="fa-solid fa-house"></i>
+            <span class="mx-2 text-sm">Quote Enquiry</span>
+            </Link>
+
             <Link href="{{ route('quote.index') }}" class="{{ request()->routeIs('dashboard.index') ? 'bg-indigo-50 dark:bg-indigo-400 text-gray-700 dark:text-white font-semibold' : '' }} text-sm py-3 my-0 mx-2 flex items-center whitespace-nowrap px-4 font-medium text-gray-500 dark:text-white hover:bg-indigo-50 dark:hover:bg-indigo-400 rounded-lg shadow-none transition-colors ease-in-out">
                 <i class="fa-solid fa-house"></i>
                 <span class="mx-2 text-sm">Quote</span>
