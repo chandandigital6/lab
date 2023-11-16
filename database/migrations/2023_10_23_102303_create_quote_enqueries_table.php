@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('requirement');
 //            $table->string('category');
             $table->string('quantity');
+            $table->string('msg');
             $table->timestamps();
         });
     }

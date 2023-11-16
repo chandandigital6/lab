@@ -13,5 +13,7 @@ class Project extends Model
     {
         Project::query()->update(['total_sum' => $totalSum]);
     }
-
+    public function quote(){
+        return $this->belongsTo(Quote::class,'id');
+    }
 }

@@ -14,5 +14,6 @@ class ProductCategory extends Model
         return $this->hasMany(QuoteEnquery::class);
 
     }
+
 }
 

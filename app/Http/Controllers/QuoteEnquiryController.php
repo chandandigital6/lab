@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\EnquiryRequest;
+use App\Mail\EnquiryQuote;
 use App\Mail\QuoteEnquiry;
 use App\Models\ProductCategory;
 use App\Models\QuoteEnquery;
@@ -23,6 +24,7 @@ class QuoteEnquiryController extends Controller
             ->column('requirement')
             ->column('productCategory_id', 'Category')
             ->column('quantity')
+            ->column('msg','Massage')
             ->column('action');
         return view('enquiry.index',compact('enquiryTable'));
     }
@@ -37,16 +39,16 @@ class QuoteEnquiryController extends Controller
                 ->options($userOption)->required(),
 //            Input::make('category')->label('Category')->required(),
             Input::make('quantity')->label('Quantity')->required(),
+            Input::make('msg')->label('Massage')->required(),
             Submit::make('create')->label('create'),
         ]);
         return view('enquiry.create',compact('EnquiryForm'));
     }
     public function store(EnquiryRequest $request){
 
-           $quoteEnquiry=QuoteEnquery::create($request->all());
-//        $user = auth()->user();
-//        $message = 'New quote inquiry created successfullly';
-//        Mail::to($user->email)->send(new QuoteEnquiry($message));
+        $enquiry = QuoteEnquery::create($request->all());
+        $msg = 'sdklfjkdlajfklvn ojdkljfkdaj oijdlkjiovfnaxvc kjoeirdfv ioerdjfvnkcl xhrfdiovn ,adcoijqoiednv c';
+        Mail::to('vinuthecoder@gmail.com')->send(new EnquiryQuote($msg));
         Toast::success('successfully created quote enquiry');
           return redirect()->route('enquiry-quote.index');
 
@@ -61,6 +63,8 @@ class QuoteEnquiryController extends Controller
                 ->label('Product category')
                 ->options($userOption)->required(),
             Input::make('quantity')->label('Quantity')->required(),
+            Input::make('msg')->label('Massage')->required(),
+
             Submit::make('edit')->label('edit'),
         ]);
         return view('enquiry.edit',compact('EnquiryForm'));

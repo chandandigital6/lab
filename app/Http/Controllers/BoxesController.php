@@ -81,9 +81,9 @@ class BoxesController extends Controller
                 ->label('Storage name')
                 ->options($storageOptions) // Use the $storageOptions array for select options
                 ->required(),
-            Input::make('boxes_name')->label('boxes_name')->placeholder('boxes_name')->required(),
-            Input::make('boxes_categories')->label('boxes_categories')->placeholder('boxes_categories')->required(),
-            Number::make('number_of_boxes')->label('number_of_boxes')->required('number_of_boxes'),
+            Input::make('boxes_name')->label('Boxes name')->placeholder('boxes name')->required(),
+            Input::make('boxes_categories')->label('Boxes categories')->placeholder('Boxes categories')->required(),
+            Number::make('number_of_boxes')->label('Number of boxes')->required('Number of boxes'),
             Submit::make('boxes')->label('update Boxes')
         ]);
         return view('boxes.edit',compact('boxesTable'));

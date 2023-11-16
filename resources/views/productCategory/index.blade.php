@@ -3,6 +3,7 @@
 <x-dashboard-layout>
     <x-section-content>
         <Link href="{{ route('product-category.create') }}" class="bg-black text-white p-1 rounded-md">Create New</Link>
+        <Link href="{{ route('selectCategory.create') }}" class="bg-black text-white p-1 rounded-md">Select Category</Link>
 {{--        <Link href="{{ route('enquiry-quote.create') }}" class="bg-red-500 text-white p-1 rounded-md ml-2">Quote Enqury</Link>--}}
         <div class="flex">
             <x-splade-table :for="$productCategoryTable">

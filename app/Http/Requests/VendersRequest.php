@@ -22,11 +22,18 @@ class VendersRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'company_name'=>'required',
-            'contact_person_name'=>'required',
-            'email_id'=>'required',
-            'phone_no'=>'integer',
-            'product_categories'=>'required',
+            'company_name' => 'required',
+            'contact_person_name' => 'required',
+            'email_id' => 'required',
+            'phone_no' => 'integer',
+            'product_categories.*' => 'required|exists:product_categories,id',
+            'product_categories' => [
+                'required',
+                function ($attribute, $value, $fail) {
+                    request()->merge(['product_categories' => json_encode($value)]);
+                },
+            ],
         ];
+
     }
 }

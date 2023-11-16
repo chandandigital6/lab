@@ -15,47 +15,48 @@
                 <span class="mx-2 text-sm">@lang('main.home')</span>
             </Link>
 
-
+{{--            @can('read instruments')--}}
   <Link href="{{ route('labInstrument.index') }}" class="{{ request()->routeIs('labInstrument.index') ? 'bg-indigo-50 dark:bg-indigo-400 text-gray-700 dark:text-white font-semibold' : '' }} text-sm py-3 my-0 mx-2 flex items-center whitespace-nowrap px-4 font-medium text-gray-500 dark:text-white hover:bg-indigo-50 dark:hover:bg-indigo-400 rounded-lg shadow-none transition-colors ease-in-out">
                 <i class="fa-solid fa-house"></i>
                 <span class="mx-2 text-sm">Instruments</span>
             </Link>
-            <Link href="{{ route('vender.index') }}" class="{{ request()->routeIs('dashboard.index') ? 'bg-indigo-50 dark:bg-indigo-400 text-gray-700 dark:text-white font-semibold' : '' }} text-sm py-3 my-0 mx-2 flex items-center whitespace-nowrap px-4 font-medium text-gray-500 dark:text-white hover:bg-indigo-50 dark:hover:bg-indigo-400 rounded-lg shadow-none transition-colors ease-in-out">
+{{--            @endcan--}}
+            <Link href="{{ route('vender.index') }}" class="{{ request()->routeIs('vender.index') ? 'bg-indigo-50 dark:bg-indigo-400 text-gray-700 dark:text-white font-semibold' : '' }} text-sm py-3 my-0 mx-2 flex items-center whitespace-nowrap px-4 font-medium text-gray-500 dark:text-white hover:bg-indigo-50 dark:hover:bg-indigo-400 rounded-lg shadow-none transition-colors ease-in-out">
                 <i class="fa-solid fa-house"></i>
                 <span class="mx-2 text-sm">Vender</span>
             </Link>
-            <Link href="{{ route('product-category.index') }}" class="{{ request()->routeIs('dashboard.index') ? 'bg-indigo-50 dark:bg-indigo-400 text-gray-700 dark:text-white font-semibold' : '' }} text-sm py-3 my-0 mx-2 flex items-center whitespace-nowrap px-4 font-medium text-gray-500 dark:text-white hover:bg-indigo-50 dark:hover:bg-indigo-400 rounded-lg shadow-none transition-colors ease-in-out">
+            <Link href="{{ route('product-category.index') }}" class="{{ request()->routeIs('product-category.index') ? 'bg-indigo-50 dark:bg-indigo-400 text-gray-700 dark:text-white font-semibold' : '' }} text-sm py-3 my-0 mx-2 flex items-center whitespace-nowrap px-4 font-medium text-gray-500 dark:text-white hover:bg-indigo-50 dark:hover:bg-indigo-400 rounded-lg shadow-none transition-colors ease-in-out">
             <i class="fa-solid fa-house"></i>
             <span class="mx-2 text-sm">Product Category</span>
             </Link>
 
-            <Link href="{{ route('enquiry-quote.index') }}" class="{{ request()->routeIs('dashboard.index') ? 'bg-indigo-50 dark:bg-indigo-400 text-gray-700 dark:text-white font-semibold' : '' }} text-sm py-3 my-0 mx-2 flex items-center whitespace-nowrap px-4 font-medium text-gray-500 dark:text-white hover:bg-indigo-50 dark:hover:bg-indigo-400 rounded-lg shadow-none transition-colors ease-in-out">
+            <Link href="{{ route('enquiry-quote.index') }}" class="{{ request()->routeIs('enquiry-quote.index') ? 'bg-indigo-50 dark:bg-indigo-400 text-gray-700 dark:text-white font-semibold' : '' }} text-sm py-3 my-0 mx-2 flex items-center whitespace-nowrap px-4 font-medium text-gray-500 dark:text-white hover:bg-indigo-50 dark:hover:bg-indigo-400 rounded-lg shadow-none transition-colors ease-in-out">
             <i class="fa-solid fa-house"></i>
             <span class="mx-2 text-sm">Quote Enquiry</span>
             </Link>
 
-            <Link href="{{ route('quote.index') }}" class="{{ request()->routeIs('dashboard.index') ? 'bg-indigo-50 dark:bg-indigo-400 text-gray-700 dark:text-white font-semibold' : '' }} text-sm py-3 my-0 mx-2 flex items-center whitespace-nowrap px-4 font-medium text-gray-500 dark:text-white hover:bg-indigo-50 dark:hover:bg-indigo-400 rounded-lg shadow-none transition-colors ease-in-out">
+            <Link href="{{ route('quote.index') }}" class="{{ request()->routeIs('quote.index') ? 'bg-indigo-50 dark:bg-indigo-400 text-gray-700 dark:text-white font-semibold' : '' }} text-sm py-3 my-0 mx-2 flex items-center whitespace-nowrap px-4 font-medium text-gray-500 dark:text-white hover:bg-indigo-50 dark:hover:bg-indigo-400 rounded-lg shadow-none transition-colors ease-in-out">
                 <i class="fa-solid fa-house"></i>
                 <span class="mx-2 text-sm">Quote</span>
             </Link>
-            <Link href="{{ route('storage.index') }}" class="{{ request()->routeIs('dashboard.index') ? 'bg-indigo-50 dark:bg-indigo-400 text-gray-700 dark:text-white font-semibold' : '' }} text-sm py-3 my-0 mx-2 flex items-center whitespace-nowrap px-4 font-medium text-gray-500 dark:text-white hover:bg-indigo-50 dark:hover:bg-indigo-400 rounded-lg shadow-none transition-colors ease-in-out">
+            <Link href="{{ route('storage.index') }}" class="{{ request()->routeIs('storage.index') ? 'bg-indigo-50 dark:bg-indigo-400 text-gray-700 dark:text-white font-semibold' : '' }} text-sm py-3 my-0 mx-2 flex items-center whitespace-nowrap px-4 font-medium text-gray-500 dark:text-white hover:bg-indigo-50 dark:hover:bg-indigo-400 rounded-lg shadow-none transition-colors ease-in-out">
             <i class="fa-solid fa-house"></i>
             <span class="mx-2 text-sm">storage</span>
             </Link>
-            <Link href="{{ route('boxes.index') }}" class="{{ request()->routeIs('dashboard.index') ? 'bg-indigo-50 dark:bg-indigo-400 text-gray-700 dark:text-white font-semibold' : '' }} text-sm py-3 my-0 mx-2 flex items-center whitespace-nowrap px-4 font-medium text-gray-500 dark:text-white hover:bg-indigo-50 dark:hover:bg-indigo-400 rounded-lg shadow-none transition-colors ease-in-out">
+            <Link href="{{ route('boxes.index') }}" class="{{ request()->routeIs('boxes.index') ? 'bg-indigo-50 dark:bg-indigo-400 text-gray-700 dark:text-white font-semibold' : '' }} text-sm py-3 my-0 mx-2 flex items-center whitespace-nowrap px-4 font-medium text-gray-500 dark:text-white hover:bg-indigo-50 dark:hover:bg-indigo-400 rounded-lg shadow-none transition-colors ease-in-out">
                 <i class="fa-solid fa-house"></i>
                 <span class="mx-2 text-sm">boxes</span>
                 </Link>
 
-            <Link href="{{ route('slot.index') }}" class="{{ request()->routeIs('dashboard.index') ? 'bg-indigo-50 dark:bg-indigo-400 text-gray-700 dark:text-white font-semibold' : '' }} text-sm py-3 my-0 mx-2 flex items-center whitespace-nowrap px-4 font-medium text-gray-500 dark:text-white hover:bg-indigo-50 dark:hover:bg-indigo-400 rounded-lg shadow-none transition-colors ease-in-out">
+            <Link href="{{ route('slot.index') }}" class="{{ request()->routeIs('slot.index') ? 'bg-indigo-50 dark:bg-indigo-400 text-gray-700 dark:text-white font-semibold' : '' }} text-sm py-3 my-0 mx-2 flex items-center whitespace-nowrap px-4 font-medium text-gray-500 dark:text-white hover:bg-indigo-50 dark:hover:bg-indigo-400 rounded-lg shadow-none transition-colors ease-in-out">
             <i class="fa-solid fa-house"></i>
             <span class="mx-2 text-sm">slots</span>
             </Link>
-            <Link href="{{ route('item.index') }}" class="{{ request()->routeIs('dashboard.index') ? 'bg-indigo-50 dark:bg-indigo-400 text-gray-700 dark:text-white font-semibold' : '' }} text-sm py-3 my-0 mx-2 flex items-center whitespace-nowrap px-4 font-medium text-gray-500 dark:text-white hover:bg-indigo-50 dark:hover:bg-indigo-400 rounded-lg shadow-none transition-colors ease-in-out">
+            <Link href="{{ route('item.index') }}" class="{{ request()->routeIs('item.index') ? 'bg-indigo-50 dark:bg-indigo-400 text-gray-700 dark:text-white font-semibold' : '' }} text-sm py-3 my-0 mx-2 flex items-center whitespace-nowrap px-4 font-medium text-gray-500 dark:text-white hover:bg-indigo-50 dark:hover:bg-indigo-400 rounded-lg shadow-none transition-colors ease-in-out">
             <i class="fa-solid fa-house"></i>
             <span class="mx-2 text-sm">item</span>
             </Link>
-            <Link href="{{ route('project.index') }}" class="{{ request()->routeIs('dashboard.index') ? 'bg-indigo-50 dark:bg-indigo-400 text-gray-700 dark:text-white font-semibold' : '' }} text-sm py-3 my-0 mx-2 flex items-center whitespace-nowrap px-4 font-medium text-gray-500 dark:text-white hover:bg-indigo-50 dark:hover:bg-indigo-400 rounded-lg shadow-none transition-colors ease-in-out">
+            <Link href="{{ route('project.index') }}" class="{{ request()->routeIs('project.index') ? 'bg-indigo-50 dark:bg-indigo-400 text-gray-700 dark:text-white font-semibold' : '' }} text-sm py-3 my-0 mx-2 flex items-center whitespace-nowrap px-4 font-medium text-gray-500 dark:text-white hover:bg-indigo-50 dark:hover:bg-indigo-400 rounded-lg shadow-none transition-colors ease-in-out">
             <i class="fa-solid fa-house"></i>
             <span class="mx-2 text-sm">project</span>
             </Link>

@@ -48,10 +48,10 @@ class ProjectController extends Controller
     public function create(){
         $projectForm=SpladeForm::make()->action(route('project.store'))->method('post')->fields([
             Input::make('name')->label('Project name')->placeholder('enter project number')->required(),
-            Input::make('project_details')->label('project_details')->placeholder('project_details')->required(),
-            Input::make('project_number')->label('project_number')->placeholder('project_number')->required(),
-            Input::make('total_fund')->label('total_fund')->placeholder('total_fund')->required(),
-            Input::make('fund_utilize')->label('fund_utilize')->placeholder('fund_utilize')->required(),
+            Input::make('project_details')->label('Project details')->placeholder('project details')->required(),
+            Input::make('project_number')->label('Project number')->placeholder('project number')->required(),
+            Input::make('total_fund')->label('Total fund')->placeholder('total fund')->required(),
+            Input::make('fund_utilize')->label('Fund utilize')->placeholder('fund utilize')->required(),
             Submit::make('Create')->label('Add project'),
 
         ]);
@@ -66,10 +66,10 @@ class ProjectController extends Controller
         $project=Project::find($project);
         $projectForm=SpladeForm::make()->fill($project)->action(route('project.update',['project'=>$project->id]))->method('put')->fields([
             Input::make('name')->label('Project name')->placeholder('enter project number')->required(),
-            Input::make('project_details')->label('project_details')->placeholder('project_details')->required(),
-            Input::make('project_number')->label('project_number')->placeholder('project_number')->required(),
-            Input::make('total_fund')->label('total_fund')->placeholder('total_fund')->required(),
-            Input::make('fund_utilize')->label('fund_utilize')->placeholder('fund_utilize')->required(),
+            Input::make('project_details')->label('Project details')->placeholder('project details')->required(),
+            Input::make('project_number')->label('Project number')->placeholder('project number')->required(),
+            Input::make('total_fund')->label('Total fund')->placeholder('total fund')->required(),
+            Input::make('fund_utilize')->label('Fund utilize')->placeholder('fund utilize')->required(),
             Submit::make('Update')->label('Update project'),
 
         ]);

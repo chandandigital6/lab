@@ -26,7 +26,7 @@
 </html> --}}
 
 
-
+@seoTitle('Create Vendor')
 <x-dashboard-layout>
     <x-section-content>
         <x-splade-modal>

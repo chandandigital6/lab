@@ -18,6 +18,7 @@ use App\Http\Controllers\QuoteEnquiryController;
 use App\Http\Controllers\SlotsController;
 use App\Http\Controllers\StorageController;
 use App\Http\Controllers\VenderController;
+use App\Http\Controllers\SelectCategoryController;
 use App\Models\Language;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -96,106 +97,122 @@ Route::middleware(['splade'])->group(function () {
         });
     });
 
-    Route::get('labinstrument/index', [LabinstrumentController::class, 'index'])->name('labInstrument.index');
-    Route::get('labinstrument/create', [LabinstrumentController::class, 'create'])->name('labInstrument.create');
-    Route::post('labinstrument/store', [LabinstrumentController::class, 'store'])->name('labInstrument.store');
-    Route::get('labinstrument/edit/{labInstrument}', [LabinstrumentController::class, 'edit'])->name('labInstrument.edit');
-    Route::put('labinstrument/update/{labInstrument}', [LabinstrumentController::class, 'update'])->name('labInstrument.update');
+    Route::prefix('labinstrument')->name('labInstrument.')->group(function () {
+        Route::get('index', [LabinstrumentController::class, 'index'])->middleware('permission:read instruments')->name('index');
+        Route::get('create', [LabinstrumentController::class, 'create'])->middleware('permission:create instruments')->name('create');
+        Route::post('store', [LabinstrumentController::class, 'store'])->name('store');
+        Route::get('edit/{labInstrument}', [LabinstrumentController::class, 'edit'])->name('edit');
+        Route::put('update/{labInstrument}', [LabinstrumentController::class, 'update'])->name('update');
 
-    Route::get('labinstrument/delete/{labInstrument}', [LabinstrumentController::class, 'delete'])->name('labInstrument.delete');
-
+        Route::get('delete/{labInstrument}', [LabinstrumentController::class, 'delete'])->name('delete');
+    });
 
     //vender
 
-
-    Route::get('vender/index', [VenderController::class, 'index'])->name('vender.index');
-    Route::get('vender/create', [VenderController::class, 'create'])->name('vender.create');
-    Route::post('vender/store', [VenderController::class, 'store'])->name('vender.store');
-    Route::get('vender/edit/{vender}', [VenderController::class, 'edit'])->name('vender.edit');
-    Route::put('vender/update{vender}', [VenderController::class, 'update'])->name('vender.update');
-    Route::get('vender/delete/{vender}', [VenderController::class, 'delete'])->name('vender.delete');
+    Route::prefix('vender')->name('vender.')->group(function () {
+        Route::get('index', [VenderController::class, 'index'])->name('index');
+        Route::get('create', [VenderController::class, 'create'])->name('create');
+        Route::post('store', [VenderController::class, 'store'])->name('store');
+        Route::get('edit/{vender}', [VenderController::class, 'edit'])->name('edit');
+        Route::put('update{vender}', [VenderController::class, 'update'])->name('update');
+        Route::get('delete/{vender}', [VenderController::class, 'delete'])->name('delete');
+    });
 
     //quote
-    Route::get('quote/index', [QuoteController::class, 'index'])->name('quote.index');
-    Route::get('quote/create', [QuoteController::class, 'create'])->name('quote.create');
-
-    Route::post('quote/store', [QuoteController::class, 'store'])->name('quote.store');
-
-    Route::get('quote/edit/{quote}', [QuoteController::class, 'edit'])->name('quote.edit');
-
-    Route::put('quote/update/{quote}', [QuoteController::class, 'update'])->name('quote.update');
-    Route::get('quote/delete/{quote}', [QuoteController::class, 'delete'])->name('quote.delete');
+    Route::prefix('quote')->name('quote.')->group(function () {
+        Route::get('index', [QuoteController::class, 'index'])->name('index');
+        Route::get('create', [QuoteController::class, 'create'])->name('create');
+        Route::post('store', [QuoteController::class, 'store'])->name('store');
+        Route::get('edit/{quote}', [QuoteController::class, 'edit'])->name('edit');
+        Route::put('update/{quote}', [QuoteController::class, 'update'])->name('update');
+        Route::get('delete/{quote}', [QuoteController::class, 'delete'])->name('delete');
+    });
 
 
     //quote Enquiry
-
-    Route::get('enquiry/index',[QuoteEnquiryController::class,'index'])->name('enquiry-quote.index');
-    Route::get('enquiry/create',[QuoteEnquiryController::class,'create'])->name('enquiry-quote.create');
-    Route::post('enquiry/store',[QuoteEnquiryController::class,'store'])->name('enquiry-quote.store');
-    Route::get('enquiry/edit/{quotEnquiry}',[QuoteEnquiryController::class,'edit'])->name('enquiry-quote.edit');
-    Route::put('enquiry/update/{quotEnquiry}',[QuoteEnquiryController::class,'update'])->name('enquiry-quote.update');
-    Route::get('enquiry/delete/{quotEnquiry}',[QuoteEnquiryController::class,'delete'])->name('enquiry-quote.delete');
-
+    Route::prefix('enquiry')->name('enquiry-quote.')->group(function () {
+        Route::get('index', [QuoteEnquiryController::class, 'index'])->name('index');
+        Route::get('create', [QuoteEnquiryController::class, 'create'])->name('create');
+        Route::post('store', [QuoteEnquiryController::class, 'store'])->name('store');
+        Route::get('edit/{quotEnquiry}', [QuoteEnquiryController::class, 'edit'])->name('edit');
+        Route::put('update/{quotEnquiry}', [QuoteEnquiryController::class, 'update'])->name('update');
+        Route::get('delete/{quotEnquiry}', [QuoteEnquiryController::class, 'delete'])->name('delete');
+    });
 
 
     //storage
-    Route::get('storage/index',[StorageController::class,'index'])->name('storage.index');
-    Route::get('/storage/show/{storage}', [StorageController::class, 'showStorageWithBoxes'])->name('storage.show');
-    Route::get('storage/create',[StorageController::class,'create'])->name('storage.create');
-    Route::post('storage/store',[StorageController::class,'store'])->name('storage.store');
-    Route::get('storage/edit/{storage}',[StorageController::class,'edit'])->name('storage.edit');
-    Route::put('storage/update/{storage}',[StorageController::class,'update'])->name('storage.update');
-    Route::get('storage/delete/{storage}',[StorageController::class,'delete'])->name('storage.delete');
-
-
+    Route::prefix('storage')->name('storage.')->group(function () {
+        Route::get('index', [StorageController::class, 'index'])->name('index');
+        Route::get('show/{storage}', [StorageController::class, 'showStorageWithBoxes'])->name('show');
+        Route::get('create', [StorageController::class, 'create'])->name('create');
+        Route::post('store', [StorageController::class, 'store'])->name('store');
+        Route::get('edit/{storage}', [StorageController::class, 'edit'])->name('edit');
+        Route::put('update/{storage}', [StorageController::class, 'update'])->name('update');
+        Route::get('delete/{storage}', [StorageController::class, 'delete'])->name('delete');
+    });
 
     // boxes
-    Route::get('boxes/show/{box}', [BoxesController::class, 'showBoxesWithslot'])->name('boxes.show');
-    Route::get('boxes/index',[BoxesController::class,'index'])->name('boxes.index');
-    Route::get('boxes/create',[BoxesController::class,'create'])->name('boxes.create');
-    Route::post('boxes/store',[BoxesController::class,'store'])->name('boxes.store');
+    Route::prefix('boxes')->name('boxes.')->group(function () {
+        Route::get('show/{box}', [BoxesController::class, 'showBoxesWithslot'])->name('show');
+        Route::get('index', [BoxesController::class, 'index'])->name('index');
+        Route::get('create', [BoxesController::class, 'create'])->name('create');
+        Route::post('store', [BoxesController::class, 'store'])->name('store');
+        Route::get('edit/{box}', [BoxesController::class, 'edit'])->name('edit');
+        Route::put('update{box}', [BoxesController::class, 'update'])->name('update');
+        Route::get('delete/{box}', [BoxesController::class, 'delete'])->name('delete');
+    });
 
-    Route::get('boxes/edit/{box}',[BoxesController::class,'edit'])->name('boxes.edit');
-    Route::put('boxes/update{box}',[BoxesController::class,'update'])->name('boxes.update');
-
-    Route::get('boxes/delete/{box}',[BoxesController::class,'delete'])->name('boxes.delete');
 
     //slots
-
-    Route::get('slot/index',[SlotsController::class,'index'])->name('slot.index');
-    Route::get('slot/create',[SlotsController::class,'create'])->name('slot.create');
-    Route::post('slot/store',[SlotsController::class,'store'])->name('slot.store');
-    Route::get('slot/store/edit/{slot}',[SlotsController::class,'edit'])->name('slot.edit');
-    Route::get('slot/store/show/{slot}',[SlotsController::class,'show'])->name('slot.show');
-    Route::put('slot/update/{slot}',[SlotsController::class,'update'])->name('slot.update');
-    Route::get('slot/delete/{slot}',[SlotsController::class,'delete'])->name('slot.delete');
+    Route::prefix('slot')->name('slot.')->group(function () {
+        Route::get('index', [SlotsController::class, 'index'])->name('index');
+        Route::get('create', [SlotsController::class, 'create'])->name('create');
+        Route::post('store', [SlotsController::class, 'store'])->name('store');
+        Route::get('store/edit/{slot}', [SlotsController::class, 'edit'])->name('edit');
+        Route::get('store/show/{slot}', [SlotsController::class, 'show'])->name('show');
+        Route::put('update/{slot}', [SlotsController::class, 'update'])->name('update');
+        Route::get('delete/{slot}', [SlotsController::class, 'delete'])->name('delete');
+    });
 
 
     //item
-    Route::get('item/index',[ItemsController::class,'index'])->name('item.index');
-    Route::get('item/create',[ItemsController::class,'create'])->name('item.create');
-    Route::post('item/store',[ItemsController::class,'store'])->name('item.store');
-    Route::get('item/edit/{item}',[ItemsController::class,'edit'])->name('item.edit');
-    Route::put('item/update/{item}',[ItemsController::class,'update'])->name('item.update');
-    Route::get('item/delete/{item}',[ItemsController::class,'delete'])->name('item.delete');
+    Route::prefix('item')->name('item.')->group(function () {
+        Route::get('index', [ItemsController::class, 'index'])->name('index');
+        Route::get('create', [ItemsController::class, 'create'])->name('create');
+        Route::post('store', [ItemsController::class, 'store'])->name('store');
+        Route::get('edit/{item}', [ItemsController::class, 'edit'])->name('edit');
+        Route::put('update/{item}', [ItemsController::class, 'update'])->name('update');
+        Route::get('delete/{item}', [ItemsController::class, 'delete'])->name('delete');
+    });
 
 
     // project
+    Route::prefix('project')->name('project.')->group(function () {
+        Route::get('index', [ProjectController::class, 'index'])->name('index');
+        Route::get('create', [ProjectController::class, 'create'])->name('create');
+        Route::post('store', [ProjectController::class, 'store'])->name('store');
+        Route::get('edit/{project}', [ProjectController::class, 'edit'])->name('edit');
+        Route::put('update/{project}', [ProjectController::class, 'update'])->name('update');
+        Route::get('delete/{project}', [ProjectController::class, 'delete'])->name('delete');
+        Route::get('pdf', [ProjectController::class, 'pdfDownload'])->name('pdf');
+    });
 
-    Route::get('project/index',[ProjectController::class,'index'])->name('project.index');
-    Route::get('project/create',[ProjectController::class,'create'])->name('project.create');
-    Route::post('project/store',[ProjectController::class,'store'])->name('project.store');
-    Route::get('project/edit/{project}',[ProjectController::class,'edit'])->name('project.edit');
-    Route::put('project/update/{project}',[ProjectController::class,'update'])->name('project.update');
-    Route::get('project/delete/{project}',[ProjectController::class,'delete'])->name('project.delete');
-   Route::get('project/pdf',[ProjectController::class,'pdfDownload'])->name('project.pdf');
+    // Product Category
+    Route::prefix('product')->name('product-category.')->group(function () {
+        Route::get('index', [ProductCategoryController::class, 'index'])->name('index');
+        Route::get('create', [ProductCategoryController::class, 'create'])->name('create');
+        Route::post('store', [ProductCategoryController::class, 'store'])->name('store');
+        Route::get('edit/{productCategory}', [ProductCategoryController::class, 'edit'])->name('edit');
+        Route::put('update/{productCategory}', [ProductCategoryController::class, 'update'])->name('update');
+        Route::get('delete/{productCategory}', [ProductCategoryController::class, 'delete'])->name('delete');
+    });
 
-   // Product Category
-    Route::get('product/index',[ProductCategoryController::class,'index'])->name('product-category.index');
-    Route::get('product/create',[ProductCategoryController::class,'create'])->name('product-category.create');
-    Route::post('product/store',[ProductCategoryController::class,'store'])->name('product-category.store');
-    Route::get('product/edit/{productCategory}',[ProductCategoryController::class,'edit'])->name('product-category.edit');
-    Route::put('product/update/{productCategory}',[ProductCategoryController::class,'update'])->name('product-category.update');
-    Route::get('product/delete/{productCategory}',[ProductCategoryController::class,'delete'])->name('product-category.delete');
-
+    Route::prefix('selectCategory')->name('selectCategory.')->group(function () {
+        Route::get('index', [SelectCategoryController::class, 'index'])->name('index');
+        Route::get('create', [SelectCategoryController::class, 'create'])->name('create');
+        Route::post('store', [SelectCategoryController::class, 'store'])->name('store');
+        Route::get('edit/{selectCategory}', [SelectCategoryController::class, 'edit'])->name('edit');
+        Route::put('update/{selectCategory}', [SelectCategoryController::class, 'update'])->name('update');
+        Route::get('delete/{selectCategory}', [SelectCategoryController::class, 'delete'])->name('delete');
+    });
 });

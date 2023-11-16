@@ -80,4 +80,8 @@ class User extends Authenticatable
     public function quotation(){
         return $this->hasMany(Quote::class);
     }
+
+    public function selectCategories(){
+        return $this->hasMany(SelectCategory::class,'user_id','id');
+    }
 }

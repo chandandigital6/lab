@@ -39,13 +39,13 @@ class QuoteController extends Controller
 
         $quoteForm = SpladeForm::make()->action(route('quote.store'))->method('post')->fields([
             Select::make('user_id')
-                ->label('user name')
+                ->label('User name')
                 ->options($userOption)->required(),
-            Input::make('quotation_submitted')->label('quotation_submitted')->placeholder('enter quotation_submitted')->required(),
-            Input::make('accepted_quotation')->label('accepted_quotation')->placeholder('enter accepted_quotation')->required(),
-            Input::make('product_status_sheet_delivered')->label('product_status_sheet_delivered')->placeholder('product_status_sheet_delivered')->required(),
+            Input::make('quotation_submitted')->label('Quotation submitted')->placeholder('enter quotation submitted')->required(),
+            Input::make('accepted_quotation')->label('Accepted quotation')->placeholder('enter accepted quotation')->required(),
+            Input::make('product_status_sheet_delivered')->label('Product status sheet delivered')->placeholder('product status sheet delivered')->required(),
             Time::make('delivery_time')->label('delivery time')->placeholder('enter deliver time')->required(),
-            Input::make('stock_status')->label('stock_status')->placeholder('enter stock_status')->required(),
+            Input::make('stock_status')->label('stock status')->placeholder('enter stock status')->required(),
             Submit::make('add quote')->label('add quote')
         ]);
 
@@ -67,11 +67,11 @@ class QuoteController extends Controller
               Select::make('user_id')
                   ->label('user name')
                   ->options($userOption)->required(),
-          Input::make('quotation_submitted')->label('quotation_submitted')->placeholder('enter quotation_submitted')->required(),
-          Input::make('accepted_quotation')->label('accepted_quotation')->placeholder('enter accepted_quotation')->required(),
-          Input::make('product_status_sheet_delivered')->label('product_status_sheet_delivered')->placeholder('product_status_sheet_delivered')->required(),
+          Input::make('quotation_submitted')->label('Quotation submitted')->placeholder('enter quotation submitted')->required(),
+          Input::make('accepted_quotation')->label('Accepted quotation')->placeholder('enter accepted quotation')->required(),
+          Input::make('product_status_sheet_delivered')->label('product status sheet delivered')->placeholder('product status sheet delivered')->required(),
           Time::make('delivery_time')->label('delivery time')->placeholder('enter deliver time')->required(),
-          Input::make('stock_status')->label('stock_status')->placeholder('enter stock_status')->required(),
+          Input::make('stock_status')->label('stock status')->placeholder('enter stock status')->required(),
           Submit::make('update quote')->label('update quote')
       ]);
     return view('quote.edit',compact('quoteForm'));
