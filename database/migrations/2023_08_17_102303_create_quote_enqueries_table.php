@@ -20,6 +20,7 @@ return new class extends Migration
 //            $table->string('category');
             $table->string('quantity');
             $table->string('msg');
+            $table->enum('status',['accept','reject'])->default('accept');
             $table->timestamps();
         });
     }
